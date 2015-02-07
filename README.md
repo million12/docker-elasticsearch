@@ -1,22 +1,31 @@
 #Elasticsearch docker image 
-Based on million12/centos-supervisor docker image. 
+[Docker Image](https://registry.hub.docker.com/u/million12/elasticsearch/) with [Elasticsearch](http://www.elasticsearch.org/) server. 
 
 Plugins Installed:
 
-1. Kibana 3.1.0
+1. Kibana 
 2. Marver
 
 ###Run 
 `docker run -d --name elasticsearch -p 9200:9200 million12/elasticsearch`
 
-###Access Web Interface
->   htttp://elasticsearch_ip:9200/_plugin/marvel
+### Custom Config 
+User can use custom configuration file by adding `-v` option into run command (see example).  
+Default configuration directory: `/opt/elasticsearch/config/`
+  
+`docker run -d --name elasticsearch -p 9200:9200 -v /path/to/myconfig.file:/opt/elasticsearch/config/elasticsearch.yml million12/elasticsearch` 
 
+###Access Web Interface
+>   htttp://elasticsearch_ip:9200/_plugin/marvel  
 >   htttp://elasticsearch_ip:9200/_plugin/kibana3
+
+### SystemD .service file
+For easy deployment using systemd we provide an example of `.service` file. See `systemd` directory
 
 ## Author(s)
 
-* Przemyslaw Ozgo linux@ozgo.info
+Author: Marcin ryzy Ryzycki (<marcin@m12.io>)  
+Author: Przemyslaw Ozgo (<linux@ozgo.info>)
 
 ---
 
