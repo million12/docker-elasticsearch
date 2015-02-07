@@ -1,13 +1,22 @@
 [Unit]
-Description=elasticsearch
+Description=Elasticsearch Server
+After=docker.service
+Requires=docker.service
 
 [Service]
-EnvironmentFile=/etc/environment
+TimeoutStartSec=0
+Type=oneshot
+RemainAfterExit=true
+ExecStartPre=-/usr/bin/docker kill elasticsearch
+ExecStartPre=-/usr/bin/docker rm -f elasticsearch
 ExecStartPre=/usr/bin/docker pull million12/elasticsearch
-ExecStart=/usr/bin/docker run --rm --name elasticsearch -p 9200:9200 -e HOST_IP=${COREOS_PUBLIC_IPV4} million12/elasticsearch
-ExecStartPost=/usr/bin/etcdctl set /elasticsearch/host ${COREOS_PUBLIC_IPV4}
-ExecStop=/usr/bin/docker kill elasticsearch
-ExecStopPost=/usr/bin/etcdctl rm /elasticsearch/host
+ExecStart=/usr/bin/docker run \
+-d \
+--name elasticsearch \
+-p 9200:9200 \
+million12/elasticsearch
+ExecStop=/usr/bin/docker stop elasticsearch
+Restart=allways
 
-[X-Fleet]
-X-Conflicts=elasticsearch.service
+[Install]
+WantedBy=multi-user.target
