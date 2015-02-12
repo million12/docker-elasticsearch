@@ -15,9 +15,15 @@ Default configuration directory: `/opt/elasticsearch/config/`
   
 `docker run -d --name elasticsearch -p 9200:9200 -v /path/to/myconfig.file:/opt/elasticsearch/config/elasticsearch.yml million12/elasticsearch` 
 
+### Kibana custom port
+In case kibana needs other port than `9200` use environment variable `KIBANA_PORT`  
+Example:  
+`docker run -f --name elasticsearch -p 9200:9200 -e KIBANA_PORT="80" million12/elasticsearch`
+
+
 ###Access Web Interface
->   htttp://elasticsearch_ip:9200/_plugin/marvel  
->   htttp://elasticsearch_ip:9200/_plugin/kibana3
+`htttp://elasticsearch_ip:9200/_plugin/marvel`  
+`htttp://elasticsearch_ip:9200/_plugin/kibana3`
 
 ### SystemD .service file
 For easy deployment using systemd we provide an example of `.service` file. See `systemd` directory
