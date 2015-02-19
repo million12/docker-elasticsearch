@@ -14,8 +14,6 @@ ExecStart=/usr/bin/docker run \
 -d \
 --name elasticsearch \
 -p 9200:9200 \
---env="KIBANA_PORT=9200" \
---env="KIBANA_DASHBOARD=default" \
 million12/elasticsearch
 ExecStop=/usr/bin/docker stop elasticsearch
 Restart=allways

@@ -8,17 +8,12 @@ RUN \
     # Install Elasticsearch
     mkdir -p /opt/elasticsearch && \
     cd /opt/elasticsearch && \
-    curl -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.3.tar.gz && \
-    tar zxvf elasticsearch-1.4.3.tar.gz -C /opt/elasticsearch --strip-components=1 && \
-    rm -f elasticsearch-1.4.3.tar.gz && \
-    /opt/elasticsearch/bin/plugin -i elasticsearch/marvel/latest && \
-    /opt/elasticsearch/bin/plugin -url http://download.elasticsearch.org/kibana/kibana/kibana-latest.zip -install elasticsearch/kibana3
+    curl -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.4.tar.gz && \
+    tar zxvf elasticsearch-1.4.4.tar.gz -C /opt/elasticsearch --strip-components=1 && \
+    rm -f elasticsearch-1.4.4.tar.gz && \
+    /opt/elasticsearch/bin/plugin -i elasticsearch/marvel/latest
 
-ENV KIBANA_PORT 9200
-ENV KIBANA_DASHBOARD default
-
-COPY start.sh /
-
-CMD /start.sh
+CMD /opt/elasticsearch/bin/elasticsearch
 
 EXPOSE 9200
+
