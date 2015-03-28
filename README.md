@@ -1,5 +1,5 @@
 # Elasticsearch docker image 
-[Docker Image](https://registry.hub.docker.com/u/million12/elasticsearch/) with [Elasticsearch](http://www.elasticsearch.org/) server.
+[Docker Image](https://registry.hub.docker.com/u/million12/elasticsearch/) with [Elasticsearch](http://www.elasticsearch.org/) server (1.5.0).
 
 **Kibana 3 Plugin removed. Kibana 4 Docker Image provided instead.**
 
