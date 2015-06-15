@@ -1,7 +1,7 @@
 # Elasticsearch docker image 
-[Docker Image](https://registry.hub.docker.com/u/million12/elasticsearch/) with [Elasticsearch](http://www.elasticsearch.org/) server (1.5.0).
+[![Circle CI](https://circleci.com/gh/million12/docker-elasticsearch/tree/master.svg?style=svg&circle-token=aa2f435356a5612d2dbed4e8e69541038cadee55)](https://circleci.com/gh/million12/docker-elasticsearch/tree/master)
 
-**Kibana 3 Plugin removed. Kibana 4 Docker Image provided instead.**
+[Docker Image](https://registry.hub.docker.com/u/million12/elasticsearch/) with [Elasticsearch](http://www.elasticsearch.org/) server (1.6.0).
 
 ### Installed Plugins:
 
