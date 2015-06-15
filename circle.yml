@@ -1,0 +1,19 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  pre:
+    - docker info && docker version
+
+# Run tests
+test:
+  pre:
+    - docker build -t million12/elasticsearch .
+
+  override:
+    # Launch Elasticsearch
+    - docker run -d -p 9200:9200 --name elasticsearch million12/elasticsearch
+    - while true; do if docker logs elasticsearch | grep "started"; then break; else sleep 1; fi done
+    # test access to elasticsearch
+    - curl -sSLi http://localhost:9200 | grep "HTTP/1.1 200 OK"
