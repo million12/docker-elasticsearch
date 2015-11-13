@@ -3,7 +3,7 @@ MAINTAINER Marcin Ryzycki marcin@m12.io, Przemyslaw Ozgo linux@ozgo.info
 
 RUN \
     rpm --rebuilddb && yum clean all && \
-    yum install -y tar java-1.8.0-openjdk && \
+    yum install -y tar java-1.8.0-openjdk sudo && \
     yum clean all && \
     mkdir -p /opt/elasticsearch && \
     cd /opt/elasticsearch && \
@@ -12,10 +12,12 @@ RUN \
     rm -f elasticsearch-2.0.0.tar.gz && \
     /opt/elasticsearch/bin/plugin install license && \
     /opt/elasticsearch/bin/plugin install marvel-agent && \
-    useradd elasticsearch && chown -R elasticsearch:wheel /opt/elasticsearch
+    useradd elasticsearch && \
+    chown -R elasticsearch:elasticsearch /opt/elasticsearch && \
+    echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-CMD /opt/elasticsearch/bin/elasticsearch --network.bind_host 0.0.0.0 --network.publish_host _non_loopback:ipv4_
-
-USER elasticsearch
+COPY container-files /
 
 EXPOSE 9200
+
+ENTRYPOINT ["/bootstrap.sh"]

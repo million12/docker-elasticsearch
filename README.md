@@ -9,6 +9,9 @@
 
 [Docker Image](https://registry.hub.docker.com/u/million12/elasticsearch/) with [Elasticsearch](http://www.elasticsearch.org/) server (2.0.0).
 
+This container is built that any extra parameters provided to `docker run` will be passed directly to `elasticsearch` command. For example, if you run `docker run [run options] million12/elasticsearch --cluster.name: my-cluser` you pass `--cluster.name my-cluster` to elasticsearch daemon.
+
+
 ### Installed Plugins:
 
 2. Marvel [Docs](http://www.elasticsearch.org/overview/marvel/)
