@@ -1,23 +1,29 @@
-# Elasticsearch docker image 
-[![Circle CI](https://circleci.com/gh/million12/docker-elasticsearch/tree/master.svg?style=svg&circle-token=aa2f435356a5612d2dbed4e8e69541038cadee55)](https://circleci.com/gh/million12/docker-elasticsearch/tree/master)
+# Elasticsearch docker image
+[![CircleCI Build Status](https://img.shields.io/circleci/project/million12/docker-elasticsearch/master.svg)](https://circleci.com/gh/million12/docker-elasticsearch/tree/master)
+[![GitHub Open Issues](https://img.shields.io/github/issues/million12/docker-elasticsearch.svg)](https://github.com/million12/docker-elasticsearch/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/million12/docker-elasticsearch.svg)](https://github.com/million12/docker-elasticsearch)
+[![GitHub Forks](https://img.shields.io/github/forks/million12/docker-elasticsearch.svg)](https://github.com/million12/docker-elasticsearch)  
+[![Stars on Docker Hub](https://img.shields.io/docker/stars/million12/elasticsearch.svg)](https://hub.docker.com/r/million12/elasticsearch)
+[![Pulls on Docker Hub](https://img.shields.io/docker/pulls/million12/elasticsearch.svg)](https://hub.docker.com/r/million12/elasticsearch)  
+[![Docker Layers](https://badge.imagelayers.io/million12/elasticsearch:latest.svg)](https://hub.docker.com/r/million12/elasticsearch)
 
-[Docker Image](https://registry.hub.docker.com/u/million12/elasticsearch/) with [Elasticsearch](http://www.elasticsearch.org/) server (1.6.0).
+[Docker Image](https://registry.hub.docker.com/u/million12/elasticsearch/) with [Elasticsearch](http://www.elasticsearch.org/) server (2.0.0).
 
 ### Installed Plugins:
 
 2. Marvel [Docs](http://www.elasticsearch.org/overview/marvel/)
 
-### Run 
+### Run
     docker run \
     -d \
     --name elasticsearch \
     -p 9200:9200 \
     million12/elasticsearch
 
-### Custom Config 
+### Custom Config
 User can use custom configuration file by adding `-v` option into run command (see example).  
 Default configuration directory: `/opt/elasticsearch/config/`  
-    
+
     docker run \
     -d \
     --name elasticsearch \
@@ -26,7 +32,7 @@ Default configuration directory: `/opt/elasticsearch/config/`
     million12/elasticsearch
 
 ### Access Web Interface
-`htttp://elasticsearch_ip:9200/_plugin/marvel`  
+`htttp://elasticsearch_ip:9200`  
 
 ### SystemD .service file
 For easy deployment using systemd we provide an example of `.service` file. See `systemd` directory
