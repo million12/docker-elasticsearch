@@ -12,7 +12,9 @@
 This container is built that any extra parameters provided to `docker run` will be passed directly to `elasticsearch` command. For example, if you run `docker run [run options] million12/elasticsearch --cluster.name: my-cluser` you pass `--cluster.name my-cluster` to elasticsearch daemon.
 
 
-### Installed Plugins:
+### ENVIRONMENTAL Variables
+
+`MARVEL_SUPPORT` - Add support for Marvel Agent. (`true/false`). `false` is default.
 
 2. Marvel [Docs](http://www.elasticsearch.org/overview/marvel/)
 
@@ -31,6 +33,7 @@ Default configuration directory: `/opt/elasticsearch/config/`
     -d \
     --name elasticsearch \
     -p 9200:9200 \
+    -e MARVEL_SUPPORT=true \
     -v /path/to/myconfig.file:/opt/elasticsearch/config/elasticsearch.yml \
     million12/elasticsearch
 

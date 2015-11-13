@@ -20,6 +20,14 @@ log() {
   else echo; fi
 }
 
+install_marvel_agent() {
+  log "Installing Marvel Agent and Trial License."
+  /opt/elasticsearch/bin/plugin install license
+  /opt/elasticsearch/bin/plugin install marvel-agent
+  chown -R elasticsearch:elasticsearch /opt/elasticsearch/
+  log "Marvel Agent Installed"
+}
+
 #######################################
 # Dump current $ELASTICSEARCH_CONFIG
 #######################################
@@ -29,6 +37,11 @@ print_config() {
   cat ${ELASTICSEARCH_CONFIG}
   printf '=%.0s' {1..100} && echo
 }
+
+# Marvel support check
+if [[ ${MARVEL_SUPPORT} == "true" || ${MARVEL_SUPPORT} == "yes" ]]; then
+  install_marvel_agent
+fi
 
 # Launch Elasticsearch.
 print_config

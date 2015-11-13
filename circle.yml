@@ -13,7 +13,9 @@ test:
 
   override:
     # Launch Elasticsearch
-    - docker run -d -p 9200:9200 --name elasticsearch million12/elasticsearch
-    - while true; do if docker logs elasticsearch | grep "started"; then break; else sleep 1; fi done
+    - docker run -d -p 9200:9200 --name elasticsearch -e MARVEL_SUPPORT=true million12/elasticsearch
+    - while true; do if docker logs elasticsearch | grep "http" | grep "publish_address"; then break; else sleep 1; fi done
     # test access to elasticsearch
     - curl -sSLi http://localhost:9200 | grep "HTTP/1.1 200 OK"
+    # test Marvel Agent installation
+    - while true; do if docker logs elasticsearch | grep "marvel-es" | grep "update_mapping" | grep "node_stats"; then break; else sleep 1; fi done
