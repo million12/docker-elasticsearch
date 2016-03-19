@@ -1,0 +1,6 @@
+elasticsearch:
+  image: million12/elasticsearch:latest
+  ports:
+    - "9200:9200/tcp"
+  environment:
+    MARVEL_SUPPORT: true

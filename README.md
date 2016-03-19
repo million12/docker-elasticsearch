@@ -7,7 +7,9 @@
 [![Pulls on Docker Hub](https://img.shields.io/docker/pulls/million12/elasticsearch.svg)](https://hub.docker.com/r/million12/elasticsearch)  
 [![Docker Layers](https://badge.imagelayers.io/million12/elasticsearch:latest.svg)](https://hub.docker.com/r/million12/elasticsearch)
 
-[Docker Image](https://registry.hub.docker.com/u/million12/elasticsearch/) with [Elasticsearch](http://www.elasticsearch.org/) server (2.2.0).
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/million12/docker-elasticsearch/tree/master)
+
+[Docker Image](https://registry.hub.docker.com/u/million12/elasticsearch/) with [Elasticsearch](http://www.elasticsearch.org/) server.
 
 This container is built that any extra parameters provided to `docker run` will be passed directly to `elasticsearch` command. For example, if you run `docker run [run options] million12/elasticsearch --cluster.name: my-cluser` you pass `--cluster.name my-cluster` to elasticsearch daemon.
 
