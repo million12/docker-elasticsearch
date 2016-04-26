@@ -1,7 +1,7 @@
 FROM centos:centos7
 MAINTAINER Marcin Ryzycki marcin@m12.io, Przemyslaw Ozgo linux@ozgo.info
 
-ENV ES_VERSION=2.2.1
+ENV ES_VERSION=2.3.2
 
 RUN \
     rpm --rebuilddb && yum clean all && \
